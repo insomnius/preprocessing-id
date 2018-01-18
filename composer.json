@@ -1,0 +1,15 @@
+{
+    "name": "insomnius/preprocessing-id",
+    "description": "Package pra-pemrosesan teks bahasa Indonesia untuk keperluan penggalian teks atau text mining",
+    "type": "library",
+    "require": {
+        "sastrawi/sastrawi": "^1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Insomnius",
+            "email": "aliana.arib@gmail.com"
+        }
+    ]
+}
