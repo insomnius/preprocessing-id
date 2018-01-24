@@ -9,7 +9,26 @@
     "authors": [
         {
             "name": "Insomnius",
-            "email": "aliana.arib@gmail.com"
+            "email": "aliana.arib@gmail.com",
+            "role": "Magician"
         }
-    ]
+    ],
+    "keywords": [
+        "stem",
+        "indonesian",
+        "bahasa",
+        "indonesia",
+        "kata dasar",
+        "root word",
+        "pra-pemrosesan",
+        "casefolding",
+        "stopword",
+        "morfologi",
+        "negasi kata"
+    ],
+    "autoload": {
+        "psr-0": {
+            "Insomnius\\": "src"
+        }
+    },
 }
