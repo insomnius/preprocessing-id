@@ -29,6 +29,12 @@
     "autoload": {
         "psr-0": {
             "Insomnius\\": "src"
+        },
+        "psr-4": {
+            "Insomnius\\": "src/Insomnius"
         }
     },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    }
 }
