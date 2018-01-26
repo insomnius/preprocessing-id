@@ -13,9 +13,29 @@ Class Escorter
         $this->manager  = (new Manager);
     }
 
-    public function escortToCleaner($word)
+    public function escortToCleaner($preparator)
     {
         $list   = $this->manager->list('cleaning');
+
+        foreach($list as $key => $value)
+        {
+            $detail   = (new $value)->clean($preparator->getWord());
+
+            $preparator->appendHistory($detail);
+            $preparator->setWord($detail->wordAfterProcess);
+        }
     }
 
+    public function escortToRegex($preparator)
+    {
+        $list   = $this->manager->list('regex');
+
+        foreach($list as $key => $value)
+        {
+            $detail   = (new $value)->regex($preparator->getWord());
+
+            $preparator->appendHistory($detail);
+            $preparator->setWord($detail->wordAfterProcess);
+        }
+    }
 }

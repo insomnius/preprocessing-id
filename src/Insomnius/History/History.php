@@ -10,19 +10,12 @@ Class History
 
     public function get()
     {
-
+        return $this->historyObject;
     }
 
     public function append($detail)
     {
-        if(is_array($detail))
-        {
-            foreach($detail as $key => $value)
-            {
-                array_push($this->historyObject, (new HistoryDetail)->create($value));
-            }
-            return $this;
-        }
+        array_push($this->historyObject, $detail);
     }
 
 }

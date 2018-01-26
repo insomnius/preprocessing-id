@@ -24,7 +24,10 @@ Class Manager
 
     protected function listRegex()
     {
-
+        $path = $this->dir . "\Regex";
+        
+        $clasess    = $this->scandir($path, '\Insomnius\Regex\\');
+        return $clasess;
     }
 
     public function list($case)
@@ -34,11 +37,10 @@ Class Manager
             case 'cleaning':
                 return $this->listCleaning();
             case 'regex':
-                return $this->regex();
+                return $this->listRegex();
             default:
                 throw new Exception("Process cannot be found.");
         }
-
     }
 
     protected function scandir($path, $namespace = "")

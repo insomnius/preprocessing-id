@@ -7,7 +7,6 @@ use Insomnius\History\History;
 Class Preparator
 {
     protected $word;
-    protected $cleanWord;
     protected $history = false;
 
     public function process($word, $history = true)
@@ -29,9 +28,16 @@ Class Preparator
         return $this->word;
     }
 
+    public function setWord($word)
+    {
+        $this->word     = $word;
+        return $this;
+    }
+
     public function getCleanWord()
     {
-        return $this->cleanWord;
+        
+        return $this->history->get()[count($this->history->get()) - 1]->wordAfterProcess;
     }
 
     public function getHistory()
@@ -39,7 +45,7 @@ Class Preparator
         return $this->history->get();
     }
 
-    public function addHistory($detail)
+    public function appendHistory($detail)
     {
         return $this->history->append($detail);
     }

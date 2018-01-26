@@ -14,11 +14,7 @@ Class Preprocessor
         $this->preparator = $preparator;
         $this->escort     = new Mechanic\Escorter();
 
-        $this->cleaning($preparator->getWord());
-    }
-
-    protected function cleaning($word)
-    {
-        $this->escort->escortToCleaner($word);
+        $this->escort->escortToCleaner($preparator);
+        $this->escort->escortToRegex($preparator);
     }
 }
