@@ -2,7 +2,7 @@
 
 namespace Insomnius\Cleaning;
 
-class Casefolding  implements CleaningInterface
+Class CleaningCasefolding  implements CleaningInterface
 {
     public function clean($word)
     {

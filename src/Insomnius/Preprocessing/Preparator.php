@@ -1,18 +1,27 @@
 <?php
 namespace Insomnius\Preprocessing;
 
-use Insomnius\Preprocessing\History;
+use Insomnius\Preprocessing;
+use Insomnius\History\History;
 
 Class Preparator
 {
     protected $word;
     protected $cleanWord;
-    
-    public function process($word)
+    protected $history = false;
+
+    public function process($word, $history = true)
     {
         $this->word     = $word;
-        
-        return $this;       
+
+        if($history)
+        {
+            $this->history  = new History();
+        }
+
+        $preprocessing  = (new Preprocessing\Preprocessor)->start($this);
+
+        return $this;
     }
 
     public function getWord()
@@ -25,4 +34,13 @@ Class Preparator
         return $this->cleanWord;
     }
 
+    public function getHistory()
+    {
+        return $this->history->get();
+    }
+
+    public function addHistory($detail)
+    {
+        return $this->history->append($detail);
+    }
 }
