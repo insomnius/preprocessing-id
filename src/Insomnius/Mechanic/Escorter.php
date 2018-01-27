@@ -13,13 +13,13 @@ Class Escorter
         $this->manager  = (new Manager);
     }
 
-    public function escortToCleaner($preparator)
+    public function escortToMorphology($preparator)
     {
         $list   = $this->manager->list('cleaning');
 
         foreach($list as $key => $value)
         {
-            $detail   = (new $value)->clean($preparator->getWord());
+            $detail   = (new $value)->morph($preparator->getWord());
 
             $preparator->appendHistory($detail);
             $preparator->setWord($detail->wordAfterProcess);

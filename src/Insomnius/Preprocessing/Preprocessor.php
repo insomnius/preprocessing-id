@@ -14,7 +14,7 @@ Class Preprocessor
         $this->preparator = $preparator;
         $this->escort     = new Mechanic\Escorter();
 
-        $this->escort->escortToCleaner($preparator);
+        $this->escort->escortToMorphology($preparator);
         $this->escort->escortToRegex($preparator);
     }
 }

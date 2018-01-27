@@ -4,5 +4,5 @@ namespace Insomnius\Morphology;
 
 interface MorphologyInterface
 {
-    public function clean($word);
+    public function morph($word);
 }

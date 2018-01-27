@@ -6,7 +6,7 @@ use Insomnius\History\Detail;
 
 Class MorphologyCasefolding  implements MorphologyInterface
 {
-    public function clean($word)
+    public function morph($word)
     {
         $detail     = new Detail();
         $detail->groupProcess   = 'Cleaning';
