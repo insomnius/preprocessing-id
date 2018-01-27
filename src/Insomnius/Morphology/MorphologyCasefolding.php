@@ -1,10 +1,10 @@
 <?php
 
-namespace Insomnius\Cleaning;
+namespace Insomnius\Morphology;
 
 use Insomnius\History\Detail;
 
-Class CleaningCasefolding  implements CleaningInterface
+Class MorphologyCasefolding  implements MorphologyInterface
 {
     public function clean($word)
     {

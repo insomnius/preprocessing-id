@@ -16,9 +16,9 @@ Class Manager
 
     protected function listCleaning()
     {
-        $path = $this->dir . "\Cleaning";
+        $path = $this->dir . "\Morphology";
         
-        $clasess    = $this->scandir($path, '\Insomnius\Cleaning\\');
+        $clasess    = $this->scandir($path, '\Insomnius\Morphology\\');
         return $clasess;
     }
 
