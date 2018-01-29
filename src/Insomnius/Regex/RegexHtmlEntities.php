@@ -1,15 +1,15 @@
 <?php
-namespace Insomnius\Morphology;
+namespace Insomnius\Regex;
 
 use Insomnius\History\Detail;
 
-class MorphologyExcessWhiteSpace implements MorphologyInterface
+class RegexHtmlEntities implements RegexInterface
 {
-    public function morph($word)
+    public function regex($word)
     {
         $matches  = null;
         
-        $patern     = '/\s+/';
+        $patern     = '/&#?\w+;+/';
         $contains   = preg_match_all($patern, $word);
         $process    = preg_replace($patern, ' ', $word);
 
@@ -18,7 +18,7 @@ class MorphologyExcessWhiteSpace implements MorphologyInterface
         $detail->groupProcess   = 'Regex';
         $detail->process        = 'Regex';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Fix all excess whitespace.';
+        $detail->detail         = 'Remove all html entities with space.';
         $detail->match          = '';
         
         $detail->wordAfterProcess   = $process;

@@ -16,5 +16,6 @@ Class Preprocessor
 
         $this->escort->escortToMorphology($preparator);
         $this->escort->escortToRegex($preparator);
+        $this->escort->escortToAdvancedMorphology($preparator);
     }
 }
