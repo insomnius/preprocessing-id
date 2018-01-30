@@ -5,7 +5,7 @@ Class Escorter
 {
     protected $manager;
 
-    public function escortToMorphology($preparator)
+    public function morphology($preparator)
     {
         $detail   = (new \Insomnius\Morphology\MorphologyCasefolding)->morph($preparator->getWord());
         $preparator->appendHistory($detail);
@@ -16,7 +16,7 @@ Class Escorter
         $preparator->setWord($detail->wordAfterProcess);
     }
 
-    public function escortToRegex($preparator)
+    public function regex($preparator)
     {
         $detail   = (new \Insomnius\Regex\RegexExcessWhiteSpace)->regex($preparator->getWord());
         $preparator->appendHistory($detail);
@@ -43,7 +43,7 @@ Class Escorter
         $preparator->setWord($detail->wordAfterProcess);
     }
 
-    public function escortToAdvancedMorphology($preparator)
+    public function advanceMorphology($preparator)
     {
         $detail   = (new \Insomnius\Morphology\MorphologyStemming)->morph($preparator->getWord());
         $preparator->appendHistory($detail);
