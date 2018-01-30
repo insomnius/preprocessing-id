@@ -16,10 +16,10 @@ class RegexDecimalNumber implements RegexInterface
 
         $detail     = new Detail();
 
-        $detail->groupProcess   = 'Regex';
-        $detail->process        = 'Regex';
+        $detail->groupProcess   = 'regex';
+        $detail->process        = 'decimal_number';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Get rid of all decimal number.';
+        $detail->detail         = 'Menghilangkan semua decimal number.';
         $detail->match          = $matches[0];
 
         $detail->wordAfterProcess   = $process;

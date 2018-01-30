@@ -15,10 +15,10 @@ class RegexExcessWhiteSpace implements RegexInterface
 
         $detail     = new Detail();
 
-        $detail->groupProcess   = 'Regex';
-        $detail->process        = 'Regex';
+        $detail->groupProcess   = 'regex';
+        $detail->process        = 'whitespace';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Fix all excess whitespace.';
+        $detail->detail         = 'Membenarkan semua whitespace yang berlebih.';
         $detail->match          = '';
         
         $detail->wordAfterProcess   = $process;

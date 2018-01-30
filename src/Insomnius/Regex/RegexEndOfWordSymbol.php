@@ -17,10 +17,10 @@ class RegexEndOfWordSymbol implements RegexInterface
 
         $detail     = new Detail();
 
-        $detail->groupProcess   = 'Regex';
-        $detail->process        = 'Regex';
+        $detail->groupProcess   = 'regex';
+        $detail->process        = 'eof_symbol';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Get rid of all of symbol in the end of word.';
+        $detail->detail         = 'Menghilangkan semua simbol diakhir kata.';
         $detail->match          = $matches[0];
 
         $detail->wordAfterProcess   = $process;

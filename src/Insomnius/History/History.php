@@ -23,4 +23,20 @@ Class History
         return count($this->historyObject);
     }
 
+    public function cleanWord()
+    {
+        if($this->count() === 0)
+        {
+            return false;
+        }
+
+        for($i = $this->count() - 1; $i >=0; $i--)
+        {
+            if(!is_array($this->historyObject[$i]->wordAfterProcess))
+            {
+                return $this->historyObject[$i]->wordAfterProcess;
+            }
+        }
+    }
+
 }

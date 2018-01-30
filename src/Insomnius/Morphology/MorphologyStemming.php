@@ -15,10 +15,10 @@ Class MorphologyStemming  implements MorphologyInterface
 
         $detail     = new Detail();
         
-        $detail->groupProcess   = 'Morphology';
-        $detail->process        = 'Stemming';
+        $detail->groupProcess   = 'morphology';
+        $detail->process        = 'stemming';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Stemming all text into its root word.';
+        $detail->detail         = 'Proses pencarian kata dasar';
 
         $detail->wordAfterProcess   = $process;
         $detail->wordBeforeProcess  = $word;

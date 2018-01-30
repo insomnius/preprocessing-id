@@ -12,10 +12,10 @@ Class MorphologyHtmlEntities  implements MorphologyInterface
 
         $detail     = new Detail();
         
-        $detail->groupProcess   = 'Morphology';
-        $detail->process        = 'HTML Entities';
+        $detail->groupProcess   = 'morphology';
+        $detail->process        = 'html_entities';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Convert all symbol with ENT_DISALOWWED flag into possible HTML entities.';
+        $detail->detail         = 'Mengubah semua simbol yang tidak bisa terbaca oleh HTML menjadi HTML entities';
 
         $detail->wordAfterProcess   = $process;
         $detail->wordBeforeProcess  = $word;

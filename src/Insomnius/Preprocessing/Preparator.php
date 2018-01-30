@@ -7,7 +7,10 @@ use Insomnius\History\History;
 Class Preparator
 {
     protected $history = false;
+    
     protected $bow  = [];
+    protected $bowInserted  = false;
+
     protected $word;
 
     public function process($word, $history = true)
@@ -31,12 +34,30 @@ Class Preparator
 
     public function getCleanWord()
     {
-        if($this->history->count() === 0)
+        if($return = $this->history->cleanWord())
+        {
+            return $return;
+        }
+        else
         {
             return $this->word;
         }
+    }
 
-        return $this->history->get()[$this->history->count() - 1]->wordAfterProcess;
+    public function setBow($bow)
+    {
+        if($this->bowInserted)
+        {
+            return $this;
+        }
+
+        $this->bow  = $bow;
+        return $this;
+    }
+
+    public function getBow()
+    {
+        return $this->bow;
     }
 
     public function getHistory()

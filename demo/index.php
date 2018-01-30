@@ -7,6 +7,7 @@
     <title>Demo Preprocessing-id</title>
 </head>
 <body>
+
 <?php
 require "../vendor/autoload.php";
 
@@ -16,7 +17,7 @@ $word   = file_get_contents('sample-text');
 
 $preprocessing  = (new Preprocessing\Preparator)->process($word);
 
-print_r($preprocessing->getHistory());
-?>    
+print_r($preprocessing->getCleanWord());
+?>
 </body>
 </html>

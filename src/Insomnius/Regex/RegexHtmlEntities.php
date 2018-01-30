@@ -15,10 +15,10 @@ class RegexHtmlEntities implements RegexInterface
 
         $detail     = new Detail();
 
-        $detail->groupProcess   = 'Regex';
-        $detail->process        = 'Regex';
+        $detail->groupProcess   = 'regex';
+        $detail->process        = 'html_entities';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Remove all html entities with space.';
+        $detail->detail         = 'Menghilangkan semua html entities dengan whitespace.';
         $detail->match          = '';
         
         $detail->wordAfterProcess   = $process;

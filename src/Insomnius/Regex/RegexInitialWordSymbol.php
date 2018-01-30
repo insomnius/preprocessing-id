@@ -16,10 +16,10 @@ class RegexInitialWordSymbol implements RegexInterface
 
         $detail     = new Detail();
 
-        $detail->groupProcess   = 'Regex';
-        $detail->process        = 'Regex';
+        $detail->groupProcess   = 'regex';
+        $detail->process        = 'initial_word_symblo';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Get rid of all of symbol in the initial of the word.';
+        $detail->detail         = 'Menghilangkan semua simbol yang ada di awal kata.';
         $detail->match          = $matches[0];
 
         $detail->wordAfterProcess   = $process;

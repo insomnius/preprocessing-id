@@ -15,10 +15,11 @@ class RegexNumberInParentheses implements RegexInterface
         $process    = preg_replace($patern, '', $word);
 
         $detail     = new Detail();
-        $detail->groupProcess   = 'Regex';
-        $detail->process        = 'Regex';
+
+        $detail->groupProcess   = 'regex';
+        $detail->process        = 'number_parentheses';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Get rid of all number inside the parentheses.';
+        $detail->detail         = 'Menghilangkan semua number yang ada di dalam kurung.';
         $detail->match          = $matches[0];
         
         $detail->wordAfterProcess   = $process;

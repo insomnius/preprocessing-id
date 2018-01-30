@@ -12,10 +12,10 @@ Class MorphologyCasefolding  implements MorphologyInterface
 
         $detail     = new Detail();
         
-        $detail->groupProcess   = 'Morphology';
-        $detail->process        = 'Casefolding';
+        $detail->groupProcess   = 'morphology';
+        $detail->process        = 'casefolding';
         $detail->class          = get_class($this);
-        $detail->detail         = 'Make all string to lowercase.';
+        $detail->detail         = 'Membuat semua string menjadi huruf kecil';
 
         $detail->wordAfterProcess   = $process;
         $detail->wordBeforeProcess  = $word;
