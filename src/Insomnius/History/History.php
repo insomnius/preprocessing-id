@@ -18,4 +18,9 @@ Class History
         array_push($this->historyObject, $detail);
     }
 
+    public function count()
+    {
+        return count($this->historyObject);
+    }
+
 }

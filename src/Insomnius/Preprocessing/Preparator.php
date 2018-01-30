@@ -6,8 +6,9 @@ use Insomnius\History\History;
 
 Class Preparator
 {
-    protected $word;
     protected $history = false;
+    protected $bow  = [];
+    protected $word;
 
     public function process($word, $history = true)
     {
@@ -28,16 +29,14 @@ Class Preparator
         return $this->word;
     }
 
-    public function setWord($word)
-    {
-        $this->word     = $word;
-        return $this;
-    }
-
     public function getCleanWord()
     {
-        
-        return $this->history->get()[count($this->history->get()) - 1]->wordAfterProcess;
+        if($this->history->count() === 0)
+        {
+            return $this->word;
+        }
+
+        return $this->history->get()[$this->history->count() - 1]->wordAfterProcess;
     }
 
     public function getHistory()
