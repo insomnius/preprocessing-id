@@ -37,6 +37,6 @@ class Regex1b implements RegexInterface
         $process    = preg_replace($patern, ' ', $word);
 
         $this->word     = $process;
-        $this->matches  = $matches[0];
+        $this->matches  = $matches;
     }
 }

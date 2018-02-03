@@ -9,27 +9,27 @@
 namespace Insomnius\Cleansing;
 
 /** 
- * Proses:          Mengubah semua karakter yang tidak terbaca menjadi html entities
- * Cleansing 1b:    kalimat -> kalimat
+ * Proses:          Casefolding
+ * Cleansing 1a:    Kalimat -> kalimat
  * @method
  * @method
 */
 class Cleansing1b implements CleansingInterface
 {
     public function clean(string $word)
-    {   
-        $this->group    = 'cleansing';
-        $this->process  = 'morph_html_entities';
+    {
+        $this->group    = 'cleaning';
+        $this->process  = 'casefolding';
         $this->class    = get_class($this);
-        $this->detail   = 'mengubah semua karater yang tidak terbaca menjadi html entities';
+        $this->detail   = 'proses ini dilakukan untuk menyamaratakan semua besar kecil huruf menjadi huruf kecil';
         
         $this->process($word);
-
+        
         return $this;
     }
 
     public function process(string $word)
     {
-        $this->word = htmlentities($word, ENT_DISALLOWED);
+        $this->word = strtolower($word);
     }
 }

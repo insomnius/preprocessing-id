@@ -9,19 +9,19 @@
 namespace Insomnius\Regex;
 
 /** 
- * Proses:          Clean HTML Entities
- * Cleansing 1a:    Kalimat -> kalimat
+ * Proses:          Clean all parentheses
+ * Cleansing 1a:    KTP (Kartu tanda penduduk) -> KTP Kartu tanda penduduk
  * @method
  * @method
 */
-class Regex1a implements RegexInterface
+class Regex1d implements RegexInterface
 {
     public function regex(string $word)
     {
         $this->group    = 'regex';
-        $this->process  = 'regex_html_entities';
+        $this->process  = 'regex_parentheses';
         $this->class    = get_class($this);
-        $this->detail   = 'menghilangkan semua html entities dengan whitespace.';
+        $this->detail   = 'menghilangkan tanda kurung yang mengurung kaliamt.';
         
         $this->process($word);
 
@@ -32,11 +32,16 @@ class Regex1a implements RegexInterface
     {
         $matches    = [];
 
-        $patern     = '/&#?\w+;+/';
+        $patern     = '/\((?|(.{0,}?))\)/';
         $contains   = preg_match_all($patern, $word, $matches);
-        $process    = preg_replace($patern, ' ', $word);
 
-        $this->matches  = $matches;
+        $patern     = array($patern);
+        $replace    = array('/[()]/');
+        $process    = preg_replace_callback($patern, function($callback){
+            return $callback[1];
+        }, $word);
+
         $this->word     = $process;
+        $this->matches  = $matches;
     }
 }

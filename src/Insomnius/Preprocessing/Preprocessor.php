@@ -12,8 +12,9 @@ class Preprocessor
         $this->preparator = $preparator;
         $this->escort     = new Escorter();
 
-        $this->escort->cleansing($preparator);
+        $this->escort->cleansing($this->preparator);
 
+        echo $this->preparator->history->last()->word;
         // $this->escort->morphology($preparator);
         // $this->escort->regex($preparator);
         // $this->escort->advanceMorphology($preparator);
