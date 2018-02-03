@@ -1,30 +1,31 @@
 <?php
+/**
+ * insomnius/preprocessing-id (https://github.com/insomnius/preprocessing-id)
+ *
+ * @link      http://github.com/insomnius/preprocessing-id repository resmi dari package ini
+ * @license   https://github.com/insomnius/preprocessing-id/blob/master/LICENSE The MIT License (MIT)
+ */
+
 namespace Insomnius\Preprocessing;
 
-use Insomnius\Preprocessing;
-use Insomnius\History\History;
-
-Class Preparator
+/**
+ * @property
+ * @property
+ * @method
+ */
+class Preparator
 {
-    protected $history = false;
-    
-    protected $bow  = [];
-    protected $bowInserted  = false;
-
+    public $history;
     protected $word;
 
     public function process($word, $history = true)
     {
         $this->word     = $word;
+        $this->history  = new History();
 
-        if($history)
-        {
-            $this->history  = new History();
-        }
+        $preprocessing  = (new Preprocessor)->start($this);
 
-        $preprocessing  = (new Preprocessing\Preprocessor)->start($this);
-
-        return $this;
+        return $this->result;
     }
 
     public function getWord()
@@ -32,41 +33,29 @@ Class Preparator
         return $this->word;
     }
 
-    public function getCleanWord()
-    {
-        if($return = $this->history->cleanWord())
-        {
-            return $return;
-        }
-        else
-        {
-            return $this->word;
-        }
-    }
+    // public function setBow($bow)
+    // {
+    //     if($this->bowInserted)
+    //     {
+    //         return $this;
+    //     }
 
-    public function setBow($bow)
-    {
-        if($this->bowInserted)
-        {
-            return $this;
-        }
+    //     $this->bow  = $bow;
+    //     return $this;
+    // }
 
-        $this->bow  = $bow;
-        return $this;
-    }
+    // public function getBow()
+    // {
+    //     return $this->bow;
+    // }
 
-    public function getBow()
-    {
-        return $this->bow;
-    }
+    // public function getHistory()
+    // {
+    //     return $this->history->get();
+    // }
 
-    public function getHistory()
-    {
-        return $this->history->get();
-    }
-
-    public function appendHistory($detail)
-    {
-        return $this->history->append($detail);
-    }
+    // public function appendHistory($detail)
+    // {
+    //     return $this->history->append($detail);
+    // }
 }

@@ -11,13 +11,9 @@
 <?php
 require "../vendor/autoload.php";
 
-use Insomnius\Preprocessing;
-
 $word   = file_get_contents('sample-text');
-
-$preprocessing  = (new Preprocessing\Preparator)->process($word);
-
-print_r($preprocessing->getCleanWord());
+$preprocessing  = (new \Insomnius\Preprocessing\Preparator)->process($word);
 ?>
+
 </body>
 </html>

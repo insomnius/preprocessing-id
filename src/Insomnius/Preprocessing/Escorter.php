@@ -1,21 +1,29 @@
 <?php
-namespace Insomnius\Mechanic;
+/**
+ * insomnius/preprocessing-id (https://github.com/insomnius/preprocessing-id)
+ *
+ * @link      http://github.com/insomnius/preprocessing-id repository resmi dari package ini
+ * @license   https://github.com/insomnius/preprocessing-id/blob/master/LICENSE The MIT License (MIT)
+ */
 
-Class Escorter
+namespace Insomnius\Preprocessing;
+
+class Escorter
 {
-    public function morphology($preparator)
+    public function cleansing($preparator)
     {
-        $detail   = (new \Insomnius\Morphology\MorphologyCasefolding)->morph($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
+        $process    = (new \Insomnius\Cleansing\Cleansing1a)->clean($preparator->getWord());
+        $preparator->history->append($process);
 
-        $detail   = (new \Insomnius\Morphology\MorphologyHtmlEntities)->morph($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
+        $process   = (new \Insomnius\Cleansing\Cleansing1b)->clean($preparator->history->last()->word);
+        $preparator->history->append($process);
+
+        $process   = (new \Insomnius\Regex\Regex1a)->regex($preparator->history->last()->word);
+        $preparator->history->append($process);
     }
 
     public function regex($preparator)
     {
-        $detail   = (new \Insomnius\Regex\RegexHtmlEntities)->regex($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
 
         $detail   = (new \Insomnius\Regex\RegexExcessWhiteSpace)->regex($preparator->getCleanWord());
         $preparator->appendHistory($detail);
