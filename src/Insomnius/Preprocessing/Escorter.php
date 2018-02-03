@@ -20,35 +20,43 @@ class Escorter
 
         $process   = (new \Insomnius\Regex\Regex1a)->regex($preparator->history->last()->word);
         $preparator->history->append($process);
+
+        $process   = (new \Insomnius\Regex\Regex1b)->regex($preparator->history->last()->word);
+        $preparator->history->append($process);
+
+        $process   = (new \Insomnius\Regex\Regex1c)->regex($preparator->history->last()->word);
+        $preparator->history->append($process);
+
+        print_r($process);
     }
 
-    public function regex($preparator)
+    public function stopword($preparator)
     {
 
-        $detail   = (new \Insomnius\Regex\RegexExcessWhiteSpace)->regex($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
-        
-        // $detail   = (new \Insomnius\Regex\RegexDecimalNumber)->regex($preparator->getCleanWord());
-        // $preparator->appendHistory($detail);
-
-        $detail   = (new \Insomnius\Regex\RegexNumberInParentheses)->regex($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
-
-        $detail   = (new \Insomnius\Regex\RegexEndOfWordSymbol)->regex($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
-
-        $detail   = (new \Insomnius\Regex\RegexInitialWordSymbol)->regex($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
     }
 
-    public function advanceMorphology($preparator)
+    public function stemming($preparator)
     {
-        $detail   = (new \Insomnius\Morphology\MorphologyStemming)->morph($preparator->getCleanWord());
-        $preparator->appendHistory($detail);
 
-        $preparator->setBow((new Bow)->make($preparator->getCleanWord()));
-
-        // $detail   = (new \Insomnius\Morphology\MorphologyUnique)->morph($preparator->getCleanWord());
-        // $preparator->appendHistory($detail);
     }
+
+    // public function regex($preparator)
+    // {
+    //     $detail   = (new \Insomnius\Regex\RegexEndOfWordSymbol)->regex($preparator->getCleanWord());
+    //     $preparator->appendHistory($detail);
+
+    //     $detail   = (new \Insomnius\Regex\RegexInitialWordSymbol)->regex($preparator->getCleanWord());
+    //     $preparator->appendHistory($detail);
+    // }
+
+    // public function advanceMorphology($preparator)
+    // {
+    //     $detail   = (new \Insomnius\Morphology\MorphologyStemming)->morph($preparator->getCleanWord());
+    //     $preparator->appendHistory($detail);
+
+    //     $preparator->setBow((new Bow)->make($preparator->getCleanWord()));
+
+    //     $detail   = (new \Insomnius\Morphology\MorphologyUnique)->morph($preparator->getCleanWord());
+    //     $preparator->appendHistory($detail);
+    // }
 }

@@ -9,34 +9,34 @@
 namespace Insomnius\Regex;
 
 /** 
- * Proses:          Clean HTML Entities
- * Cleansing 1a:    Kalimat -> kalimat
+ * Proses:          Clean All Excess White space
+ * Cleansing 1a:    Aku adalah           anak gembala -> Aku adalah anak gembala
  * @method
  * @method
 */
-class Regex1a implements RegexInterface
+class Regex1b implements RegexInterface
 {
     public function regex(string $word)
     {
         $this->group    = 'regex';
-        $this->process  = 'regex_html_entities';
+        $this->process  = 'whitespace';
         $this->class    = get_class($this);
-        $this->detail   = 'Menghilangkan semua html entities dengan whitespace.';
+        $this->detail   = 'menjadikan semua whitespace berlebih hanya menjadi satu saja.';
         
         $this->process($word);
-
+        
         return $this;
     }
 
     public function process(string $word)
     {
         $matches    = [];
-
-        $patern     = '/&#?\w+;+/';
+        
+        $patern     = '/\s+/';
         $contains   = preg_match_all($patern, $word, $matches);
         $process    = preg_replace($patern, ' ', $word);
 
-        $this->matches  = $matches[0];
         $this->word     = $process;
+        $this->matches  = $matches[0];
     }
 }

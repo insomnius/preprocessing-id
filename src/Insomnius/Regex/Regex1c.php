@@ -9,22 +9,22 @@
 namespace Insomnius\Regex;
 
 /** 
- * Proses:          Clean HTML Entities
- * Cleansing 1a:    Kalimat -> kalimat
+ * Proses:          Clean all number in parentheses
+ * Cleansing 1a:    Sebagian warga indonesia berumur 20-15 tahun.[1] -> Sebagian warga indonesia berumur 20-15 tahun.
  * @method
  * @method
 */
-class Regex1a implements RegexInterface
+class Regex1c implements RegexInterface
 {
     public function regex(string $word)
     {
         $this->group    = 'regex';
-        $this->process  = 'regex_html_entities';
+        $this->process  = 'number_parentheses';
         $this->class    = get_class($this);
-        $this->detail   = 'Menghilangkan semua html entities dengan whitespace.';
+        $this->detail   = 'menghilangkan semua angka yang ada di dalam kurung.';
         
         $this->process($word);
-
+        
         return $this;
     }
 
@@ -32,11 +32,11 @@ class Regex1a implements RegexInterface
     {
         $matches    = [];
 
-        $patern     = '/&#?\w+;+/';
+        $patern     = '/[\[\({]+\d+[\]\)}]/';
         $contains   = preg_match_all($patern, $word, $matches);
-        $process    = preg_replace($patern, ' ', $word);
+        $process    = preg_replace($patern, '', $word);
 
-        $this->matches  = $matches[0];
         $this->word     = $process;
+        $this->matches  = $matches[0];
     }
 }
