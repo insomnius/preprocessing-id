@@ -9,19 +9,19 @@
 namespace Insomnius\Regex;
 
 /** 
- * Proses:          Clean all parentheses
- * Cleansing 1a:    KTP (Kartu tanda penduduk) -> KTP Kartu tanda penduduk
+ * Proses:          Clean all date
+ * Cleansing 1a:    Pada tanggal 1 Januari 2019 -> pada tanggal
  * @method
  * @method
 */
-class Regex1d implements RegexInterface
+class Regex1e implements RegexInterface
 {
     public function regex(string $word)
     {
         $this->group    = 'regex';
-        $this->process  = 'regex_parentheses';
+        $this->process  = 'regex_date';
         $this->class    = get_class($this);
-        $this->detail   = 'menghilangkan tanda kurung yang mengurung kaliamt.';
+        $this->detail   = 'membersihkan semua tanggal yang ada pada text.';
         
         $this->process($word);
 
@@ -32,14 +32,12 @@ class Regex1d implements RegexInterface
     {
         $matches    = [];
 
-        $patern     = '/\((?|(.{0,}?))\)/';
+        $patern     = '/(\d{1,4})+( +|-|\/|\\)(\d{1,2}|\w{3,9})+( +|-|\/|\\)?(\d{1,4})?/';
         $contains   = preg_match_all($patern, $word, $matches);
-        
-        $process    = preg_replace_callback($patern, function($callback){
-            return $callback[1];
-        }, $word);
 
-        $this->word     = $process;
+        $process    = preg_replace($patern, '', $word);
+
+        $this->word     = $word;
         $this->matches  = $matches;
     }
 }

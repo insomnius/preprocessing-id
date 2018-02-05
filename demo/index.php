@@ -11,7 +11,7 @@
 <?php
 require "../vendor/autoload.php";
 
-$word   = file_get_contents('sample-text');
+$word   = file_get_contents('sample-text.md');
 $preprocessing  = (new \Insomnius\Preprocessing\Preparator)->process($word);
 ?>
 

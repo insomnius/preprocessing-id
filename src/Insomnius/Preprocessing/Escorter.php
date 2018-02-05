@@ -29,6 +29,9 @@ class Escorter
 
         $process   = (new \Insomnius\Regex\Regex1d)->regex($preparator->history->last()->word);
         $preparator->history->append($process);
+
+        // $process   = (new \Insomnius\Regex\Regex1e)->regex($preparator->history->last()->word);
+        // $preparator->history->append($process);
     }
 
     public function stopword($preparator)
