@@ -14,11 +14,7 @@ class Preprocessor
 
         $this->escort->cleansing($this->preparator);
 
-        // echo $this->preparator->history->last()->word;
         print_r($this->preparator->history->last());
-        // $this->escort->morphology($preparator);
-        // $this->escort->regex($preparator);
-        // $this->escort->advanceMorphology($preparator);
 
         $this->preparator->result   = new Result($this->preparator);
     }

@@ -33,11 +33,11 @@ class Regex1e implements RegexInterface
         $matches    = [];
 
         $patern     = '/(\d{1,4})+( +|-|\/|\\)(\d{1,2}|\w{3,9})+( +|-|\/|\\)?(\d{1,4})?/';
-        $contains   = preg_match_all($patern, $word, $matches);
+        
+        $contains   = preg_match_all('/\d+/', $word, $matches);
+        $process    = preg_replace('/\d+/', '', $word);
 
-        $process    = preg_replace($patern, '', $word);
-
-        $this->word     = $word;
+        $this->word     = $process;
         $this->matches  = $matches;
     }
 }
